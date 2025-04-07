@@ -359,21 +359,33 @@
 </p>
 
     <!-- Buttons to Copy Links -->
-    <div class="button-container">
-      <button onclick="copyToClipboard('rdp-link-1')">RDP 1</button>
-      <button onclick="copyToClipboard('rdp-link-2')">RDP 2</button>
-      <button onclick="copyToClipboard('rdp-link-3')">RDP 3</button>
-      <button onclick="copyToClipboard('rdp-link-4')">RDP 4</button>
-      <button onclick="copyToClipboard('rdp-link-5')">RDP 5</button>
-    </div>
-    
-    <!-- Hidden Links -->
-    <textarea id="rdp-link-1" style="position: absolute; left: -9999px;">https://rdp-link1.com</textarea>
-    <textarea id="rdp-link-2" style="position: absolute; left: -9999px;">https://rdp-link2.com</textarea>
-    <textarea id="rdp-link-3" style="position: absolute; left: -9999px;">https://rdp-link3.com</textarea>
-    <textarea id="rdp-link-4" style="position: absolute; left: -9999px;">https://rdp-link4.com</textarea>
-    <textarea id="rdp-link-5" style="position: absolute; left: -9999px;">https://rdp-link5.com</textarea>
-  </div>
+<!-- Buttons to Copy Links -->
+<div class="button-container">
+  <button onclick="fetchAndCopy('rdp-link-1')">RDP 1</button>
+  <button onclick="fetchAndCopy('rdp-link-2')">RDP 2</button>
+  <button onclick="fetchAndCopy('rdp-link-3')">RDP 3</button>
+  <button onclick="fetchAndCopy('rdp-link-4')">RDP 4</button>
+  <button onclick="fetchAndCopy('rdp-link-5')">RDP 5</button>
+</div>
+
+<script>
+  async function fetchAndCopy(filename) {
+    try {
+      const response = await fetch(`${filename}`);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const text = await response.text();
+
+      // Copy the text to clipboard
+      await navigator.clipboard.writeText(text.trim());
+
+      alert(`Copied: ${text.trim()}`);
+    } catch (error) {
+      console.error('Error fetching or copying:', error);
+      alert('Failed to copy link.');
+    }
+  }
+</script>
+
 </header>
 
 <!-- Popup Notification -->

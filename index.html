@@ -363,13 +363,22 @@
 
 
     <!-- Buttons to Copy Links -->
-<div class="button-container">
-  <button onclick="copyRDP(1)">RDP 1</button>
-  <button onclick="copyRDP(2)">RDP 2</button>
-  <button onclick="copyRDP(3)">RDP 3</button>
-  <button onclick="copyRDP(4)">RDP 4</button>
-  <button onclick="copyRDP(5)">RDP 5</button>
-</div>
+    <div class="button-container">
+      <button onclick="copyToClipboard('rdp-link-1')">RDP 1</button>
+      <button onclick="copyToClipboard('rdp-link-2')">RDP 2</button>
+      <button onclick="copyToClipboard('rdp-link-3')">RDP 3</button>
+      <button onclick="copyToClipboard('rdp-link-4')">RDP 4</button>
+      <button onclick="copyToClipboard('rdp-link-5')">RDP 5</button>
+    </div>
+    
+    <!-- Hidden Links -->
+    <textarea id="rdp-link-1" style="position: absolute; left: -9999px;">https://rdp-link1.com</textarea>
+    <textarea id="rdp-link-2" style="position: absolute; left: -9999px;">https://rdp-link2.com</textarea>
+    <textarea id="rdp-link-3" style="position: absolute; left: -9999px;">https://rdp-link3.com</textarea>
+    <textarea id="rdp-link-4" style="position: absolute; left: -9999px;">https://rdp-link4.com</textarea>
+    <textarea id="rdp-link-5" style="position: absolute; left: -9999px;">https://rdp-link5.com</textarea>
+  </div>
+</header>
 
 <!-- Popup Notification -->
 <div id="copy-popup" class="popup">Copied to Clipboard!</div>
@@ -429,41 +438,17 @@
 </style>
 
 <script>
-  const rdpLinks = {};
-
-  // Preload all RDP links from files
-  for (let i = 1; i <= 5; i++) {
-    fetch(`rdp-link-${i}`)
-      .then(response => response.text())
-      .then(data => {
-        rdpLinks[`rdp-link-${i}`] = data.trim();
-      })
-      .catch(err => {
-        console.error(`Failed to load rdp-link-${i}:`, err);
-        rdpLinks[`rdp-link-${i}`] = '';
-      });
-  }
-
-  function copyRDP(num) {
-    const link = rdpLinks[`rdp-link-${num}`];
-    if (!link) {
-      alert(`RDP link ${num} not loaded yet or failed to load.`);
-      return;
-    }
-
-    // Copy to clipboard
-    const tempInput = document.createElement("textarea");
-    tempInput.value = link;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    tempInput.setSelectionRange(0, 99999);
+  function copyToClipboard(id) {
+    var copyText = document.getElementById(id);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
     document.execCommand("copy");
-    document.body.removeChild(tempInput);
-
-    // Show popup
-    const popup = document.getElementById("copy-popup");
+    
+    var popup = document.getElementById("copy-popup");
     popup.classList.add("show");
-    setTimeout(() => popup.classList.remove("show"), 3000);
+    setTimeout(function() {
+      popup.classList.remove("show");
+    }, 3000);
   }
 </script>
 

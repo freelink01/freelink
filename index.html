@@ -355,12 +355,8 @@
   <div class="container" style="text-align: center;">
     <h1>Free Public RDP Links</h1>
     <p style="font-size: 15px; color: black;">
-  <span style="background-color: yellow;">Click the button to copy</span>
-</p>
-
-
-
-
+      <span style="background-color: yellow;">Click the button to copy</span>
+    </p>
 
     <!-- Buttons to Copy Links -->
     <div class="button-container">
@@ -370,26 +366,43 @@
       <button onclick="copyFromFile('rdp-link-4')">RDP 4</button>
       <button onclick="copyFromFile('rdp-link-5')">RDP 5</button>
     </div>
-    
-    <!-- Hidden Links -->
-    <script>
-    async function copyFromFile(fileName) {
-      try {
-        const response = await fetch(fileName);
-        if (!response.ok) throw new Error('File not found');
-        const text = await response.text();
-        await navigator.clipboard.writeText(text);
-        document.getElementById('status').textContent = `Copied from ${fileName}!`;
-      } catch (error) {
-        document.getElementById('status').textContent = `Failed to copy from ${fileName}: ${error.message}`;
-      }
-    }
-  </script>
+
+    <!-- Popup Notification -->
+    <div id="copy-popup" class="popup">Copied to Clipboard!</div>
+
+    <!-- Status Message (optional) -->
+    <div id="status" style="color: green; margin-top: 10px;"></div>
   </div>
 </header>
 
-<!-- Popup Notification -->
-<div id="copy-popup" class="popup">Copied to Clipboard!</div>
+<script>
+  // Function to fetch and copy RDP links from a file
+  async function copyFromFile(fileName) {
+    try {
+      const response = await fetch(fileName);
+      if (!response.ok) throw new Error('File not found');
+      const text = await response.text();
+      await navigator.clipboard.writeText(text);
+      
+      // Show success popup
+      showPopup(`Copied from ${fileName}!`);
+    } catch (error) {
+      // Show failure message in status
+      showPopup(`Failed to copy from ${fileName}: ${error.message}`);
+    }
+  }
+
+  // Function to display the popup
+  function showPopup(message) {
+    var popup = document.getElementById("copy-popup");
+    popup.textContent = message;
+    popup.classList.add("show");
+    
+    setTimeout(function() {
+      popup.classList.remove("show");
+    }, 3000);
+  }
+</script>
 
 <style>
   .button-container {
@@ -444,27 +457,6 @@
     opacity: 1;
   }
 </style>
-
-<script>
-  function copyToClipboard(id) {
-    var copyText = document.getElementById(id);
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
-    document.execCommand("copy");
-    
-    var popup = document.getElementById("copy-popup");
-    popup.classList.add("show");
-    setTimeout(function() {
-      popup.classList.remove("show");
-    }, 3000);
-  }
-</script>
-
-
-
-
-
-    
 
   <!-- Price Section -->
   <section id="price">

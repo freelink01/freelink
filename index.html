@@ -358,148 +358,16 @@
   <span style="background-color: yellow;">Click the button to copy</span>
 </p>
 
-<!-- Buttons to Copy Links -->
-<div class="button-container">
-  <button onclick="fetchAndCopy('rdp-link-1.txt')">RDP 1</button>
-  <button onclick="fetchAndCopy('rdp-link-2.txt')">RDP 2</button>
-  <button onclick="fetchAndCopy('rdp-link-3.txt')">RDP 3</button>
-  <button onclick="fetchAndCopy('rdp-link-4.txt')">RDP 4</button>
-  <button onclick="fetchAndCopy('rdp-link-5.txt')">RDP 5</button>
-</div>
-
-<!-- Toast Message -->
-<div id="toast" style="display: none;"></div>
-
-<script>
-  async function fetchAndCopy(filename) {
-    try {
-      const response = await fetch(filename);
-      if (!response.ok) throw new Error('Network response was not ok');
-      const text = await response.text();
-
-      await navigator.clipboard.writeText(text.trim());
-
-      // Show simple success message
-      showToast('Link copied successfully');
-    } catch (error) {
-      console.error('Error fetching or copying:', error);
-      showToast('❌ Failed to copy link.');
-    }
-  }
-
-  function showToast(message) {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.style.display = 'block';
-    toast.style.opacity = 1;
-
-    setTimeout(() => {
-      toast.style.transition = 'opacity 0.5s ease';
-      toast.style.opacity = 0;
-      setTimeout(() => {
-        toast.style.display = 'none';
-      }, 500);
-    }, 2000); // Show for 2 seconds
-  }
-</script>
-
-<style>
-  #toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #28a745;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    z-index: 9999;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .button-container button {
-    margin: 5px;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-</style>
 
 
-</header>
 
-<!-- Popup Notification -->
-<div id="copy-popup" class="popup">Copied to Clipboard!</div>
 
-<style>
-  .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
 
-  button {
-    background-color: #FF5733;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
 
-  button:hover {
-    background-color: #c44226;
-    transform: scale(1.05);
-  }
 
-  button:active {
-    background-color: #7a2917;
-    transform: scale(0.95);
-  }
 
-  .popup {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    font-size: 18px;
-    text-align: center;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
 
-  .popup.show {
-    display: block;
-    opacity: 1;
-  }
-</style>
-
-<script>
-  function copyToClipboard(id) {
-    var copyText = document.getElementById(id);
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
-    document.execCommand("copy");
     
-    var popup = document.getElementById("copy-popup");
-    popup.classList.add("show");
-    setTimeout(function() {
-      popup.classList.remove("show");
-    }, 3000);
-  }
-</script>
 
   <!-- Price Section -->
   <section id="price">

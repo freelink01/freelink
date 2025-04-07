@@ -362,7 +362,95 @@
 
 
 
+    <!-- Buttons to Copy Links -->
+    <div class="button-container">
+      <button onclick="copyToClipboard('rdp-link-1')">RDP 1</button>
+      <button onclick="copyToClipboard('rdp-link-2')">RDP 2</button>
+      <button onclick="copyToClipboard('rdp-link-3')">RDP 3</button>
+      <button onclick="copyToClipboard('rdp-link-4')">RDP 4</button>
+      <button onclick="copyToClipboard('rdp-link-5')">RDP 5</button>
+    </div>
+    
+    <!-- Hidden Links -->
+    <textarea id="rdp-link-1" style="position: absolute; left: -9999px;">https://rdp-link1.com</textarea>
+    <textarea id="rdp-link-2" style="position: absolute; left: -9999px;">https://rdp-link2.com</textarea>
+    <textarea id="rdp-link-3" style="position: absolute; left: -9999px;">https://rdp-link3.com</textarea>
+    <textarea id="rdp-link-4" style="position: absolute; left: -9999px;">https://rdp-link4.com</textarea>
+    <textarea id="rdp-link-5" style="position: absolute; left: -9999px;">https://rdp-link5.com</textarea>
+  </div>
+</header>
 
+<!-- Popup Notification -->
+<div id="copy-popup" class="popup">Copied to Clipboard!</div>
+
+<style>
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: #FF5733;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  button:hover {
+    background-color: #c44226;
+    transform: scale(1.05);
+  }
+
+  button:active {
+    background-color: #7a2917;
+    transform: scale(0.95);
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .popup.show {
+    display: block;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function copyToClipboard(id) {
+    var copyText = document.getElementById(id);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand("copy");
+    
+    var popup = document.getElementById("copy-popup");
+    popup.classList.add("show");
+    setTimeout(function() {
+      popup.classList.remove("show");
+    }, 3000);
+  }
+</script>
 
 
 

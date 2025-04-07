@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free RDP Providers</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #212529;
+      transition: all 0.3s ease;
+    }
+
+    h1, h2 {
+      color: #2C3E50;
+      font-weight: 700;
+    }
+
+    /* Container for page */
+    .container {
+      width: 85%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Fixed Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #34495E;
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding: 10px 15px;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav ul li a:hover {
+      color: #FF9800;
+      transform: translateY(-3px);
+    }
+
+    /* Body Padding Adjustment to Account for Fixed Nav */
+    body {
+      padding-top: 70px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1E90FF, #4682B4);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+      border-bottom: 5px solid #E5E5E5;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 50px;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    /* Unique ON/OFF button */
+    #themeToggle {
+      position: fixed;
+      top: 100px;  /* Adjusted to be below the header */
+      right: 20px;
+      background-color: transparent;
+      color: white;
+      border: 2px solid #FF9800;
+      padding: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #themeToggle:before {
+      content: '🌙'; /* Moon icon for dark mode */
+      transition: transform 0.3s ease;
+    }
+
+    #themeToggle.off:before {
+      content: '☀️'; /* Sun icon for light mode */
+      transition: transform 0.3s ease;
+    }
+
+    #themeToggle:hover {
+      background-color: #FF5722;
+      transform: scale(1.1);
+    }
+
+    /* WhatsApp Button */
+    #whatsappButton {
+      position: fixed;
+      top: 180px;  /* Adjusted to be below the dark mode button */
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #whatsappButton:hover {
+      background-color: #128C7E;
+      transform: scale(1.1);
+    }
+
+    #whatsappButton img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Main Content */
+    main {
+      padding: 60px 0;
+      background-color: #ffffff;
+    }
+
+    .section-title {
+      font-size: 38px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2C3E50;
+      font-weight: 700;
+    }
+
+    .section-content {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .section-content div {
+      flex: 1;
+      background-color: #f1f1f1;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section-content div:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-content h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #34495E;
+      font-weight: 600;
+    }
+
+    .section-content p {
+      font-size: 16px;
+      color: #7f8c8d;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2C3E50;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: #FF9800;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #34495E;
+      color: white;
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #2980B9, #2C3E50);
+    }
+
+    body.dark-mode nav {
+      background-color: #2C3E50;
+    }
+
+    body.dark-mode footer {
+      background-color: #34495E;
+    }
+
+    body.dark-mode header h1, body.dark-mode footer {
+      color: #ecf0f1;
+    }
+
+    body.dark-mode button {
+      background-color: #FF9800;
+      color: white;
+    }
+
+    body.dark-mode button:hover {
+      background-color: #FF5722;
+    }
+
+    body.dark-mode nav ul li a {
+      color: #ecf0f1;
+    }
+
+    body.dark-mode nav ul li a:hover {
+      color: #FF9800;
+    }
+
+    /* Price Section - Removing Dark Mode */
+    #price {
+      background-color: #ffffff;  /* Ensure Price section is unaffected by dark mode */
+      color: #212529;
+    }
+
+    /* Contact Us Section */
+    #contact {
+      background-color: #f1f1f1;
+      padding: 40px;
+      margin-top: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #contact h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #2C3E50;
+    }
+
+    #contact p {
+      font-size: 18px;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+
+    #contact .contact-item {
+      font-size: 18px;
+      color: #2C3E50;
+      margin-bottom: 10px;
+    }
+
+    #contact a {
+      color: #FF9800;
+      text-decoration: none;
+    }
+
+    #contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .section-content {
+        flex-direction: column;
+      }
+
+      header h1 {
+        font-size: 36px;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed Navigation Bar -->
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#price">Price</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Header -->
+<header id="home">
+  <div class="container" style="text-align: center;">
+    <h1>Free Public RDP Links</h1>
+    <p style="font-size: 15px; color: black;">
+  <span style="background-color: yellow;">Click the button to copy</span>
+</p>
+
+    <!-- Buttons to Copy Links -->
+    <div class="button-container">
+      <button onclick="copyToClipboard('rdp-link-1')">RDP 1</button>
+      <button onclick="copyToClipboard('rdp-link-2')">RDP 2</button>
+      <button onclick="copyToClipboard('rdp-link-3')">RDP 3</button>
+      <button onclick="copyToClipboard('rdp-link-4')">RDP 4</button>
+      <button onclick="copyToClipboard('rdp-link-5')">RDP 5</button>
+    </div>
+    
+    <!-- Hidden Links -->
+    <textarea id="rdp-link-1" style="position: absolute; left: -9999px;">https://rdp-link1.com</textarea>
+    <textarea id="rdp-link-2" style="position: absolute; left: -9999px;">https://rdp-link2.com</textarea>
+    <textarea id="rdp-link-3" style="position: absolute; left: -9999px;">https://rdp-link3.com</textarea>
+    <textarea id="rdp-link-4" style="position: absolute; left: -9999px;">https://rdp-link4.com</textarea>
+    <textarea id="rdp-link-5" style="position: absolute; left: -9999px;">https://rdp-link5.com</textarea>
+  </div>
+</header>
+
+<!-- Popup Notification -->
+<div id="copy-popup" class="popup">Copied to Clipboard!</div>
+
+<style>
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: #FF5733;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  button:hover {
+    background-color: #c44226;
+    transform: scale(1.05);
+  }
+
+  button:active {
+    background-color: #7a2917;
+    transform: scale(0.95);
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .popup.show {
+    display: block;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function copyToClipboard(id) {
+    var copyText = document.getElementById(id);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand("copy");
+    
+    var popup = document.getElementById("copy-popup");
+    popup.classList.add("show");
+    setTimeout(function() {
+      popup.classList.remove("show");
+    }, 3000);
+  }
+</script>
+
+  <!-- Price Section -->
+  <section id="price">
+    <h2 class="section-title">Private RDP for Sale</h2>
+    <div class="container">
+      <div class="section-content">
+        <div>
+          <p style="font-weight: bold; color: black; text-align: center; background-color: yellow; font-size: 40px;">
+  To buy private RDP for just 10 INR for 11 hours! Contact us on WhatsApp +916386977003 to buy now!
+</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Mode Toggle Button (placed in the top-right corner) -->
+  <button id="themeToggle" class="off"></button>
+
+  <!-- WhatsApp Button -->
+  <button id="whatsappButton" onclick="window.location.href='https://wa.me/916386977003'">
+    <img src="https://www.freepnglogos.com/uploads/whatsapp-logo-png-hd-2.png" alt="WhatsApp Logo" width="30" height="30"/>
+  </button>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <!-- About Section -->
+      <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="section-content">
+          <div>
+            <h3>Who We Are</h3>
+            <p>We are a leading provider of Free RDP services, offering high-quality and secure remote desktop access to users at affordable rates. Our goal is to help individuals and businesses access RDP at minimal costs, ensuring fast, reliable, and uninterrupted service.</p>
+          </div>
+          <div>
+            <h3>Our Mission</h3>
+            <p>Our mission is to provide seamless, fast, and secure remote desktop solutions with an emphasis on affordability. We believe in making RDP services accessible to everyone, whether for personal use or business needs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="section-content">
+          <div>
+            <h3>Free RDP Access</h3>
+            <p>We offer free RDP access with 11 hours of connectivity for just 10 Rupees (INR). Our servers are optimized to provide fast and secure remote desktop connections with easy access to all your resources.</p>
+          </div>
+          <div>
+            <h3>Private RDP (Single User)</h3>
+            <p>For those who need exclusive and secure access, we offer Private RDP services. This is dedicated RDP access for one user, ensuring you won't share the resources with others. Get the reliability and privacy you need for only 10 Rupees (INR) for 11 hours.</p>
+          </div>
+          <div>
+            <h3>24/7 Support</h3>
+            <p>We offer around-the-clock customer support to assist with any issues you may encounter. Our team is ready to ensure a smooth experience at all times.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <p>For inquiries or more information, feel free to reach out to us. We're here to help!</p>
+        <div class="contact-item">
+          <strong>WhatsApp:</strong> <a href="https://wa.me/916386977003">+91 6386977003</a>
+        </div>
+        <div class="contact-item">
+          <strong>Email:</strong> <a href="mailto:ashu940631@gmail.com">ashu940631@gmail.com</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Free RDP Providers | <a href="#contact">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Toggle Dark Mode
+    const themeToggleButton = document.getElementById('themeToggle');
+
+    themeToggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      themeToggleButton.classList.toggle('off');
+      themeToggleButton.classList.toggle('on');
+    });
+  </script>
+
+</body>
+</html>

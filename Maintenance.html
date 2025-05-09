@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Under Maintenance</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1f1f1f;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+    }
+    .date-range {
+      font-size: 1.1em;
+      color: #00c3ff;
+      margin-bottom: 1em;
+    }
+    .spinner {
+      border: 6px solid #444;
+      border-top: 6px solid #00c3ff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Website Under Maintenance</h1>
+  <p>Our free RDP and VPS services are temporarily unavailable.</p>
+  <div class="date-range">Maintenance Period: <strong>09 May 2025</strong> to <strong>11 May 2025</strong></div>
+  <p>We’ll be back soon. Thank you for your patience!</p>
+  <div class="spinner"></div>
+  <footer>&copy; 2025 FreeRDP VPS Provider</footer>
+</body>
+</html>

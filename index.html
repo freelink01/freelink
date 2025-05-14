@@ -3,341 +3,437 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free RDP Providers</title>
+  <title>Free RDP & VPS Providers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset some default styles */
+    /* Reset default styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Body Styles */
+    /* Body styles */
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      background-color: #f8f9fa;
-      color: #212529;
-      transition: all 0.3s ease;
+      background-color: #ffffff;
+      color: #111827;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    h1, h2 {
-      color: #2C3E50;
-      font-weight: 700;
-    }
-
-    /* Container for page */
+    /* Container */
     .container {
-      width: 85%;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Fixed Navigation Bar */
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #34495E;
-      padding: 15px 0;
+      background-color: #1f2a44;
+      padding: 10px 0;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     nav ul {
       list-style: none;
-      text-align: center;
-    }
-
-    nav ul li {
-      display: inline-block;
-      margin: 0 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: nowrap; /* Prevent wrapping */
     }
 
     nav ul li a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
-      font-size: 18px;
-      text-transform: uppercase;
-      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 12px;
       transition: color 0.3s ease, transform 0.2s ease;
     }
 
     nav ul li a:hover {
-      color: #FF9800;
-      transform: translateY(-3px);
-    }
-
-    /* Body Padding Adjustment to Account for Fixed Nav */
-    body {
-      padding-top: 70px;
+      color: #f59e0b;
+      transform: translateY(-2px);
     }
 
     /* Header */
     header {
-      background-color: #B0E0E6;
-      color: white;
-      padding: 80px 0;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: #ffffff;
+      padding: 100px 0;
       text-align: center;
-      border-bottom: 5px solid #E5E5E5;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      position: relative;
+      border-bottom: 5px solid #e5e7eb;
+      margin-top: 50px;
     }
 
     header h1 {
-      font-size: 50px;
-      margin-bottom: 15px;
-      letter-spacing: 2px;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
     header p {
-      font-size: 22px;
-      margin-bottom: 30px;
+      font-size: 20px;
+      max-width: 600px;
+      margin: 0 auto 30px;
     }
 
-    /* Unique ON/OFF button */
+    /* GIF Group */
+    .gif-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      margin: 30px 0;
+    }
+
+    .gif-container {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .gif-container img {
+      width: 180px;
+      height: 120px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gif-container:hover img {
+      transform: scale(2);
+    }
+
+    .gif-container p {
+      font-size: 16px;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    /* Buttons */
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: #f59e0b;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #d97706;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #10b981;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .popup.show {
+      opacity: 1;
+    }
+
+    /* Theme Toggle */
     #themeToggle {
       position: fixed;
-      top: 100px;  /* Adjusted to be below the header */
+      top: 60px;
       right: 20px;
-      background-color: transparent;
-      color: white;
-      border: 2px solid #FF9800;
-      padding: 15px;
-      font-size: 24px;
+      background-color: #1f2a44;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      font-size: 20px;
       cursor: pointer;
       border-radius: 50%;
       transition: background-color 0.3s ease, transform 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1100;
     }
 
     #themeToggle:before {
-      content: '🌙'; /* Moon icon for dark mode */
-      transition: transform 0.3s ease;
+      content: '🌙';
     }
 
     #themeToggle.off:before {
-      content: '☀️'; /* Sun icon for light mode */
-      transition: transform 0.3s ease;
+      content: '☀️';
     }
 
     #themeToggle:hover {
-      background-color: #FF5722;
+      background-color: #f59e0b;
       transform: scale(1.1);
     }
 
     /* WhatsApp Button */
     #whatsappButton {
       position: fixed;
-      top: 180px;  /* Adjusted to be below the dark mode button */
+      top: 120px;
       right: 20px;
-      background-color: #25D366;
-      color: white;
+      background-color: #25d366;
       border: none;
-      padding: 15px;
-      font-size: 24px;
+      padding: 12px;
+      font-size: 20px;
       cursor: pointer;
       border-radius: 50%;
       transition: background-color 0.3s ease, transform 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    #whatsappButton:hover {
-      background-color: #128C7E;
-      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1100;
     }
 
     #whatsappButton img {
-      width: 30px;
-      height: 30px;
+      width: 24px;
+      height: 24px;
     }
 
-    /* Main Content */
-    main {
-      padding: 60px 0;
-      background-color: #ffffff;
+    #whatsappButton:hover {
+      background-color: #16a34a;
+      transform: scale(1.1);
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 0;
     }
 
     .section-title {
-      font-size: 38px;
+      font-size: 36px;
+      font-weight: 700;
       text-align: center;
       margin-bottom: 40px;
-      color: #2C3E50;
-      font-weight: 700;
+      color: #111827;
     }
 
     .section-content {
-      display: flex;
-      gap: 20px;
-      justify-content: space-between;
-      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
 
     .section-content div {
-      flex: 1;
-      background-color: #f1f1f1;
+      background-color: #f8fafc;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .section-content div:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     .section-content h3 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #34495E;
+      font-size: 24px;
       font-weight: 600;
+      margin-bottom: 15px;
+      color: #111827;
     }
 
     .section-content p {
       font-size: 16px;
-      color: #7f8c8d;
-      line-height: 1.6;
+      color: #374151;
     }
 
-    /* Footer */
-    footer {
-      background-color: #2C3E50;
-      color: white;
-      padding: 40px 0;
-      text-align: center;
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    footer p {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    footer a {
-      color: #FF9800;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Dark Mode Styles */
-    body.dark-mode {
-      background-color: #34495E;
-      color: white;
-    }
-
-    body.dark-mode header {
-      background: linear-gradient(135deg, #2980B9, #2C3E50);
-    }
-
-    body.dark-mode nav {
-      background-color: #2C3E50;
-    }
-
-    body.dark-mode footer {
-      background-color: #34495E;
-    }
-
-    body.dark-mode header h1, body.dark-mode footer {
-      color: #ecf0f1;
-    }
-
-    body.dark-mode button {
-      background-color: #FF9800;
-      color: white;
-    }
-
-    body.dark-mode button:hover {
-      background-color: #FF5722;
-    }
-
-    body.dark-mode nav ul li a {
-      color: #ecf0f1;
-    }
-
-    body.dark-mode nav ul li a:hover {
-      color: #FF9800;
-    }
-
-    /* Price Section - Removing Dark Mode */
+    /* Price Section */
     #price {
-      background-color: #ffffff;  /* Ensure Price section is unaffected by dark mode */
-      color: #212529;
+      background-color: #ffffff;
     }
 
-    /* Contact Us Section */
+    #price .section-content div {
+      text-align: center;
+    }
+
+    #price .highlight {
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+      background-color: #fef08a;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    /* Contact Section */
     #contact {
-      background-color: #f1f1f1;
-      padding: 40px;
-      margin-top: 40px;
+      background-color: #f1f3f5;
       border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    #contact h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #2C3E50;
-    }
-
-    #contact p {
-      font-size: 18px;
-      color: #7f8c8d;
-      margin-bottom: 20px;
     }
 
     #contact .contact-item {
       font-size: 18px;
-      color: #2C3E50;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     #contact a {
-      color: #FF9800;
+      color: #f59e0b;
       text-decoration: none;
+      font-weight: 600;
     }
 
     #contact a:hover {
       text-decoration: underline;
     }
 
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .section-content {
-        flex-direction: column;
-      }
+    /* Footer */
+    footer {
+      background-color: #1f2a44;
+      color: #ffffff;
+      padding: 40px 0;
+      text-align: center;
+    }
 
+    footer a {
+      color: #f59e0b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .social-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    footer .social-links img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    footer .social-links img:hover {
+      transform: scale(1.2);
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #2d3748;
+      color: #e2e8f0;
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #1e40af, #1f2a44);
+    }
+
+    body.dark-mode nav {
+      background-color: #1f2a44;
+    }
+
+    body.dark-mode footer {
+      background-color: #1f2a44;
+    }
+
+    body.dark-mode .section-content div {
+      background-color: #374151;
+    }
+
+    body.dark-mode .section-title,
+    body.dark-mode .section-content h3 {
+      color: #f3f4f6;
+    }
+
+    body.dark-mode .section-content p {
+      color: #d1d5db;
+    }
+
+    body.dark-mode #contact {
+      background-color: #374151;
+    }
+
+    body.dark-mode .gif-container p {
+      color: #e2e8f0;
+    }
+
+    body.dark-mode #price .highlight {
+      color: #111827;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
       header h1 {
         font-size: 36px;
       }
 
-      nav ul li {
-        margin: 0 15px;
+      header p {
+        font-size: 18px;
+      }
+
+      nav ul {
+        gap: 10px; /* Tighter gap for horizontal layout */
+        padding: 5px 0; /* Reduced padding */
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        white-space: nowrap; /* Prevent text wrapping */
       }
 
       nav ul li a {
-        font-size: 16px;
+        font-size: 13px; /* Smaller font for mobile */
+        padding: 6px 8px; /* Tighter padding */
       }
 
       .section-title {
-        font-size: 32px;
+        font-size: 28px;
+      }
+
+      .gif-group {
+        grid-template-columns: 1fr;
+      }
+
+      #themeToggle {
+        top: 50px; /* Adjusted for shorter nav */
+        right: 10px;
+      }
+
+      #whatsappButton {
+        top: 110px; /* Adjusted for shorter nav */
+        right: 10px;
+      }
+
+      header {
+        margin-top: 50px; /* Adjusted for shorter nav */
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Fixed Navigation Bar -->
+  <!-- Navigation -->
   <nav>
     <div class="container">
       <ul>
@@ -350,251 +446,116 @@
     </div>
   </nav>
 
-<!-- Header -->
-<header id="home">
-  <div class="container" style="text-align: center;">
-    <h1>Free Public VPS and RDP Links</h1>
-
-    
-
-<!-- GIF Images Grouped with Labels Above -->
-<style>
-  .gif-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 20px 0;
-  }
-
-  .gif-container {
-    text-align: center;
-    position: relative;
-    transition: transform 0.3s ease;
-  }
-
-  .gif-container img {
-    width: 150px;
-    height: 100px;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
-    transition: transform 0.3s ease, z-index 0.3s ease;
-    z-index: 1;
-    position: relative;
-  }
-
-  .gif-container:hover img {
-    transform: scale(3); /* Bigger popup */
-    z-index: 100;
-  }
-</style>
-
-<div class="gif-group">
-  <div class="gif-container">
-    <p style="font-size: 18px; color: black;">Preview of RDP 1</p>
-    <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-1.1.gif" alt="RDP 1">
-  </div>
-
-  <div class="gif-container">
-    <p style="font-size: 18px; color: black;">Preview of RDP 2</p>
-    <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-2.1.gif" alt="RDP 2">
-  </div>
-
-  <div class="gif-container">
-    <p style="font-size: 18px; color: black;">Preview of RDP 3</p>
-    <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-3.1.gif" alt="RDP 3">
-  </div>
-
-  <div class="gif-container">
-    <p style="font-size: 18px; color: black;">Preview of RDP 4</p>
-    <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-4.1.gif" alt="RDP 4">
-  </div>
-
-  <div class="gif-container">
-    <p style="font-size: 18px; color: black;">Preview of RDP 5</p>
-    <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-5.1.gif" alt="RDP 5">
-  </div>
-</div>
-
-
-    
-    <p style="font-size: 15px; color: black;">
-      <span style="background-color: yellow;">Click the button to copy</span>
-    </p>
-
-    <!-- Buttons to Copy Links -->
-    <div class="button-container">
-      <button onclick="copyFromFile('rdp-link-1')">RDP 1</button>
-      <button onclick="copyFromFile('rdp-link-2')">RDP 2</button>
-      <button onclick="copyFromFile('rdp-link-3')">RDP 3</button>
-      <button onclick="copyFromFile('vps-link-4')">VPS 4</button>
-      <button onclick="copyFromFile('vps-link-5')">VPS 5</button>
+  <!-- Header -->
+  <header id="home">
+    <div class="container">
+      <h1>Free Public VPS & RDP Access</h1>
+      <p>Access high-quality, secure remote desktop solutions for free or at affordable rates.</p>
+      <div class="gif-group">
+        <div class="gif-container">
+          <p>Preview of RDP 1</p>
+          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-1.1.gif" alt="RDP 1">
+        </div>
+        <div class="gif-container">
+          <p>Preview of RDP 2</p>
+          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-2.1.gif" alt="RDP 2">
+        </div>
+        <div class="gif-container">
+          <p>Preview of RDP 3</p>
+          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-3.1.gif" alt="RDP 3">
+        </div>
+        <div class="gif-container">
+          <p>Preview of VPS 4</p>
+          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-4.1.gif" alt="VPS 4">
+        </div>
+        <div class="gif-container">
+          <p>Preview of VPS 5</p>
+          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-5.1.gif" alt="VPS 5">
+        </div>
+      </div>
+      <p style="font-size: 16px; color: #ffffff; background-color: #f59e0b; display: inline-block; padding: 8px 16px; border-radius: 6px;">
+        Click the buttons below to copy links
+      </p>
+      <div class="button-container">
+        <button onclick="copyFromFile('rdp-link-1')">RDP 1</button>
+        <button onclick="copyFromFile('rdp-link-2')">RDP 2</button>
+        <button onclick="copyFromFile('rdp-link-3')">RDP 3</button>
+        <button onclick="copyFromFile('vps-link-4')">VPS 4</button>
+        <button onclick="copyFromFile('vps-link-5')">VPS 5</button>
+      </div>
+      <div id="copy-popup" class="popup"></div>
+      <a href="https://www.youtube.com/@rdpprovider" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 20px; color: #ffffff; background-color: #f59e0b; text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 6px; transition: background-color 0.3s ease;">
+        Visit for Password
+      </a>
     </div>
-
-    <!-- Popup Notification -->
-    <div id="copy-popup" class="popup">Copied to Clipboard!</div>
-
-    <!-- Status Message (optional) -->
-    <div id="status" style="color: green; margin-top: 10px;"></div>
-  </div>
-<br> 
-<a href="https://www.youtube.com/@rdpprovider" target="_blank" rel="noopener noreferrer" style="color:#0056b3;background-color:#ffd700;text-decoration:none;font-weight:600;padding:4px 8px;border-radius:6px;box-shadow:0 2px 4px rgba(0,0,0,0.2);transition:all 0.3s ease;display:inline-block;">VISITE FOR PASSWORD=https://www.youtube.com/@rdpprovider</a>
-  
-</header>
-
-<script>
-  // Function to fetch and copy RDP links from a file
-  async function copyFromFile(fileName) {
-    try {
-      const response = await fetch(fileName);
-      if (!response.ok) throw new Error('File not found');
-      const text = await response.text();
-      await navigator.clipboard.writeText(text);
-      
-      // Show success popup
-      showPopup(`LINK COPIED SUCCESSFULLY`);
-    } catch (error) {
-      // Show failure message in status
-      showPopup(`Failed to copy from ${fileName}: ${error.message}`);
-    }
-  }
-
-  // Function to display the popup
-  function showPopup(message) {
-    var popup = document.getElementById("copy-popup");
-    popup.textContent = message;
-    popup.classList.add("show");
-    
-    setTimeout(function() {
-      popup.classList.remove("show");
-    }, 3000);
-  }
-</script>
-
-<style>
-  .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-
-  button {
-    background-color: #FF5733;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-
-  button:hover {
-    background-color: #c44226;
-    transform: scale(1.05);
-  }
-
-  button:active {
-    background-color: #7a2917;
-    transform: scale(0.95);
-  }
-
-  .popup {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    font-size: 18px;
-    text-align: center;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  .popup.show {
-    display: block;
-    opacity: 1;
-  }
-</style>
+  </header>
 
   <!-- Price Section -->
-  <section id="price">
-    <h2 class="section-title">Private VPS and RDP for Sale</h2>
+  <section id="price" class="section">
     <div class="container">
+      <h2 class="section-title">Private VPS & RDP Plans</h2>
       <div class="section-content">
         <div>
-          <p style="font-weight: bold; color: black; text-align: center; background-color: yellow; font-size: 40px;">
-  To buy private VPS/RDP for just 10 INR for 11 hours! Contact us on WhatsApp +916386977003 to buy now!
-</p>
-          <div class="video-link" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-  <h2 style="margin-bottom: 10px;">This video explains the price and session period:</h2>
-  <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" style="font-size: 20px; color: blue; text-decoration: underline;">
-    Watch on YouTube
-  </a>
-</div>
+          <p class="highlight">Private VPS/RDP for only ₹10 for 11 hours!</p>
+          <p>Contact us on WhatsApp at <a href="https://wa.me/916386977003">+91 6386977003</a> to purchase now.</p>
+          <div class="video-link">
+            <p>Learn more about our pricing and session details:</p>
+            <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">Watch on YouTube</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Dark Mode Toggle Button (placed in the top-right corner) -->
-  <button id="themeToggle" class="off"></button>
+  <!-- Theme Toggle -->
+  <button id="themeToggle" class="off" aria-label="Toggle dark mode"></button>
 
   <!-- WhatsApp Button -->
-  <button id="whatsappButton" onclick="window.location.href='https://wa.me/916386977003'">
-    <img src="https://www.freepnglogos.com/uploads/whatsapp-logo-png-hd-2.png" alt="WhatsApp Logo" width="30" height="30"/>
+  <button id="whatsappButton" onclick="window.location.href='https://wa.me/916386977003'" aria-label="Contact via WhatsApp">
+    <img src="https://www.freepnglogos.com/uploads/whatsapp-logo-png-hd-2.png" alt="WhatsApp Logo">
   </button>
 
   <!-- Main Content -->
   <main>
     <div class="container">
       <!-- About Section -->
-      <section id="about">
+      <section id="about" class="section">
         <h2 class="section-title">About Us</h2>
         <div class="section-content">
           <div>
             <h3>Who We Are</h3>
-            <p>We are a leading provider of Free RDP services, offering high-quality and secure remote desktop access to users at affordable rates. Our goal is to help individuals and businesses access RDP at minimal costs, ensuring fast, reliable, and uninterrupted service.</p>
+            <p>We are a trusted provider of free and affordable RDP and VPS services, delivering secure and reliable remote desktop access to users worldwide.</p>
           </div>
           <div>
             <h3>Our Mission</h3>
-            <p>Our mission is to provide seamless, fast, and secure remote desktop solutions with an emphasis on affordability. We believe in making RDP services accessible to everyone, whether for personal use or business needs.</p>
+            <p>To make high-quality remote desktop solutions accessible to everyone, offering fast, secure, and cost-effective services for personal and business needs.</p>
           </div>
         </div>
       </section>
 
       <!-- Services Section -->
-      <section id="services">
+      <section id="services" class="section">
         <h2 class="section-title">Our Services</h2>
         <div class="section-content">
           <div>
             <h3>Free RDP Access</h3>
-            <p>We offer free RDP access with 11 hours of connectivity for just 10 Rupees (INR). Our servers are optimized to provide fast and secure remote desktop connections with easy access to all your resources.</p>
+            <p>Enjoy free RDP access with 11 hours of connectivity for just ₹10. Our optimized servers ensure fast and secure connections.</p>
           </div>
           <div>
-            <h3>Private RDP (Single User)</h3>
-            <p>For those who need exclusive and secure access, we offer Private RDP services. This is dedicated RDP access for one user, ensuring you won't share the resources with others. Get the reliability and privacy you need for only 10 Rupees (INR) for 11 hours.</p>
+            <h3>Private RDP</h3>
+            <p>Get exclusive, single-user RDP access for enhanced privacy and performance, available for only ₹10 for 11 hours.</p>
           </div>
           <div>
             <h3>24/7 Support</h3>
-            <p>We offer around-the-clock customer support to assist with any issues you may encounter. Our team is ready to ensure a smooth experience at all times.</p>
+            <p>Our dedicated support team is available around the clock to assist with any questions or issues.</p>
           </div>
         </div>
       </section>
 
       <!-- Contact Section -->
-      <section id="contact">
+      <section id="contact" class="section">
         <h2 class="section-title">Contact Us</h2>
-        <p>For inquiries or more information, feel free to reach out to us. We're here to help!</p>
+        <p>Reach out for inquiries or support. We're here to help!</p>
         <div class="contact-item">
           <strong>WhatsApp:</strong> <a href="https://wa.me/916386977003">+91 6386977003</a>
         </div>
@@ -608,21 +569,47 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 Free RDP Providers | <a href="#contact">Contact Us</a></p>
+      <p>© 2025 Free RDP & VPS Providers | <a href="#contact">Contact Us</a></p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@rdpprovider" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.freepnglogos.com/uploads/youtube-logo-png/youtube-logo-3.png" alt="YouTube">
+        </a>
+        <a href="https://wa.me/916386977003" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.freepnglogos.com/uploads/whatsapp-logo-png-hd-2.png" alt="WhatsApp">
+        </a>
+      </div>
     </div>
   </footer>
 
   <!-- JavaScript -->
   <script>
-    // Toggle Dark Mode
+    // Theme Toggle
     const themeToggleButton = document.getElementById('themeToggle');
-
     themeToggleButton.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       themeToggleButton.classList.toggle('off');
-      themeToggleButton.classList.toggle('on');
     });
-  </script>
 
+    // Copy Link from File
+    async function copyFromFile(fileName) {
+      try {
+        const response = await fetch(fileName);
+        if (!response.ok) throw new Error('Failed to fetch link');
+        const text = await response.text();
+        await navigator.clipboard.writeText(text);
+        showPopup('Link copied successfully!');
+      } catch (error) {
+        showPopup(`Error: ${error.message}`);
+      }
+    }
+
+    // Show Popup
+    function showPopup(message) {
+      const popup = document.getElementById('copy-popup');
+      popup.textContent = message;
+      popup.classList.add('show');
+      setTimeout(() => popup.classList.remove('show'), 3000);
+    }
+  </script>
 </body>
 </html>

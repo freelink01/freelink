@@ -29,40 +29,6 @@
       padding: 0 20px;
     }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #1f2a44;
-      padding: 10px 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: nowrap; /* Prevent wrapping */
-    }
-
-    nav ul li a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 8px 12px;
-      transition: color 0.3s ease, transform 0.2s ease;
-    }
-
-    nav ul li a:hover {
-      color: #f59e0b;
-      transform: translateY(-2px);
-    }
-
     /* Header */
     header {
       background: linear-gradient(135deg, #2563eb, #1e40af);
@@ -70,7 +36,6 @@
       padding: 100px 0;
       text-align: center;
       border-bottom: 5px solid #e5e7eb;
-      margin-top: 50px;
     }
 
     header h1 {
@@ -83,39 +48,6 @@
       font-size: 20px;
       max-width: 600px;
       margin: 0 auto 30px;
-    }
-
-    /* GIF Group */
-    .gif-group {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      justify-items: center;
-      margin: 30px 0;
-    }
-
-    .gif-container {
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .gif-container img {
-      width: 180px;
-      height: 120px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .gif-container:hover img {
-      transform: scale(2);
-    }
-
-    .gif-container p {
-      font-size: 16px;
-      color: #111827;
-      margin-bottom: 10px;
     }
 
     /* Buttons */
@@ -168,181 +100,6 @@
       opacity: 1;
     }
 
-    /* Theme Toggle */
-    #themeToggle {
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      background-color: #1f2a44;
-      color: #ffffff;
-      border: none;
-      padding: 12px;
-      font-size: 20px;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 1100;
-    }
-
-    #themeToggle:before {
-      content: '🌙';
-    }
-
-    #themeToggle.off:before {
-      content: '☀️';
-    }
-
-    #themeToggle:hover {
-      background-color: #f59e0b;
-      transform: scale(1.1);
-    }
-
-    /* WhatsApp Button */
-    #whatsappButton {
-      position: fixed;
-      top: 120px;
-      right: 20px;
-      background-color: #25d366;
-      border: none;
-      padding: 12px;
-      font-size: 20px;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 1100;
-    }
-
-    #whatsappButton img {
-      width: 24px;
-      height: 24px;
-    }
-
-    #whatsappButton:hover {
-      background-color: #16a34a;
-      transform: scale(1.1);
-    }
-
-    /* Sections */
-    .section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
-      color: #111827;
-    }
-
-    .section-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .section-content div {
-      background-color: #f8fafc;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .section-content div:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .section-content h3 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 15px;
-      color: #111827;
-    }
-
-    .section-content p {
-      font-size: 16px;
-      color: #374151;
-    }
-
-    /* Price Section */
-    #price {
-      background-color: #ffffff;
-    }
-
-    #price .section-content div {
-      text-align: center;
-    }
-
-    #price .highlight {
-      font-size: 28px;
-      font-weight: 700;
-      color: #111827;
-      background-color: #fef08a;
-      padding: 10px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-    }
-
-    /* Contact Section */
-    #contact {
-      background-color: #f1f3f5;
-      border-radius: 8px;
-    }
-
-    #contact .contact-item {
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
-    #contact a {
-      color: #f59e0b;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    #contact a:hover {
-      text-decoration: underline;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #1f2a44;
-      color: #ffffff;
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    footer a {
-      color: #f59e0b;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    footer .social-links {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    footer .social-links img {
-      width: 24px;
-      height: 24px;
-      transition: transform 0.3s ease;
-    }
-
-    footer .social-links img:hover {
-      transform: scale(1.2);
-    }
-
     /* Dark Mode */
     body.dark-mode {
       background-color: #2d3748;
@@ -351,39 +108,6 @@
 
     body.dark-mode header {
       background: linear-gradient(135deg, #1e40af, #1f2a44);
-    }
-
-    body.dark-mode nav {
-      background-color: #1f2a44;
-    }
-
-    body.dark-mode footer {
-      background-color: #1f2a44;
-    }
-
-    body.dark-mode .section-content div {
-      background-color: #374151;
-    }
-
-    body.dark-mode .section-title,
-    body.dark-mode .section-content h3 {
-      color: #f3f4f6;
-    }
-
-    body.dark-mode .section-content p {
-      color: #d1d5db;
-    }
-
-    body.dark-mode #contact {
-      background-color: #374151;
-    }
-
-    body.dark-mode .gif-container p {
-      color: #e2e8f0;
-    }
-
-    body.dark-mode #price .highlight {
-      color: #111827;
     }
 
     /* Responsive Design */
@@ -395,84 +119,15 @@
       header p {
         font-size: 18px;
       }
-
-      nav ul {
-        gap: 10px; /* Tighter gap for horizontal layout */
-        padding: 5px 0; /* Reduced padding */
-        overflow-x: auto; /* Allow horizontal scrolling if needed */
-        white-space: nowrap; /* Prevent text wrapping */
-      }
-
-      nav ul li a {
-        font-size: 13px; /* Smaller font for mobile */
-        padding: 6px 8px; /* Tighter padding */
-      }
-
-      .section-title {
-        font-size: 28px;
-      }
-
-      .gif-group {
-        grid-template-columns: 1fr;
-      }
-
-      #themeToggle {
-        top: 50px; /* Adjusted for shorter nav */
-        right: 10px;
-      }
-
-      #whatsappButton {
-        top: 110px; /* Adjusted for shorter nav */
-        right: 10px;
-      }
-
-      header {
-        margin-top: 50px; /* Adjusted for shorter nav */
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#price">Price</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <!-- Header -->
   <header id="home">
     <div class="container">
       <h1>Free Public VPS & RDP Access</h1>
       <p>Access high-quality, secure remote desktop solutions for free or at affordable rates.</p>
-      <div class="gif-group">
-        <div class="gif-container">
-          <p>Preview of RDP 1</p>
-          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-1.1.gif" alt="RDP 1">
-        </div>
-        <div class="gif-container">
-          <p>Preview of RDP 2</p>
-          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-2.1.gif" alt="RDP 2">
-        </div>
-        <div class="gif-container">
-          <p>Preview of RDP 3</p>
-          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-3.1.gif" alt="RDP 3">
-        </div>
-        <div class="gif-container">
-          <p>Preview of RDP 4</p>
-          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-4.1.gif" alt="VPS 4">
-        </div>
-        <div class="gif-container">
-          <p>Preview of RDP 5</p>
-          <img src="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/RDP-5.1.gif" alt="VPS 5">
-        </div>
-      </div>
       <p style="font-size: 16px; color: #ffffff; background-color: #f59e0b; display: inline-block; padding: 8px 16px; border-radius: 6px;">
         Click the buttons below to copy links
       </p>
@@ -490,106 +145,8 @@
     </div>
   </header>
 
-  <!-- Price Section -->
-  <section id="price" class="section">
-    <div class="container">
-      <h2 class="section-title">Private VPS & RDP Plans</h2>
-      <div class="section-content">
-        <div>
-          <p class="highlight">Get private VPS/RDP with full root access — only ₹10 for 11 hours!</p>
-          <p>Contact us on WhatsApp at <a href="https://wa.me/916386977003">+91 6386977003</a> to purchase now.</p>
-          <div class="video-link">
-            <p>Learn more about our pricing and session details:</p>
-            <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">Watch on YouTube</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Theme Toggle -->
-  <button id="themeToggle" class="off" aria-label="Toggle dark mode"></button>
-
-  <!-- WhatsApp Button -->
-  <button id="whatsappButton" onclick="window.location.href='https://wa.me/916386977003'" aria-label="Contact via WhatsApp">
-    <img src="https://www.freepnglogos.com/uploads/whatsapp-logo-png-hd-2.png" alt="WhatsApp Logo">
-  </button>
-
-  <!-- Main Content -->
-  <main>
-    <div class="container">
-      <!-- About Section -->
-      <section id="about" class="section">
-        <h2 class="section-title">About Us</h2>
-        <div class="section-content">
-          <div>
-            <h3>Who We Are</h3>
-            <p>We are a trusted provider of free and affordable RDP and VPS services, delivering secure and reliable remote desktop access to users worldwide.</p>
-          </div>
-          <div>
-            <h3>Our Mission</h3>
-            <p>To make high-quality remote desktop solutions accessible to everyone, offering fast, secure, and cost-effective services for personal and business needs.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Services Section -->
-      <section id="services" class="section">
-        <h2 class="section-title">Our Services</h2>
-        <div class="section-content">
-          <div>
-            <h3>Free RDP Access</h3>
-            <p>Enjoy free RDP access with 11 hours of connectivity for just ₹10. Our optimized servers ensure fast and secure connections.</p>
-          </div>
-          <div>
-            <h3>Private RDP</h3>
-            <p>Get exclusive, single-user RDP access for enhanced privacy and performance, available for only ₹10 for 11 hours.</p>
-          </div>
-          <div>
-            <h3>24/7 Support</h3>
-            <p>Our dedicated support team is available around the clock to assist with any questions or issues.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact" class="section">
-        <h2 class="section-title">Contact Us</h2>
-        <p>Reach out for inquiries or support. We're here to help!</p>
-        <div class="contact-item">
-          <strong>WhatsApp:</strong> <a href="https://wa.me/916386977003">+91 6386977003</a>
-        </div>
-        <div class="contact-item">
-          <strong>Email:</strong> <a href="mailto:ashu940631@gmail.com">ashu940631@gmail.com</a>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2025 Free RDP & VPS Providers | <a href="#contact">Contact Us</a></p>
-      <div class="social-links">
-        <a href="https://www.youtube.com/@rdpprovider" target="_blank" rel="noopener noreferrer">
-          <img src="https://www.freepnglogos.com/uploads/youtube-logo-png/youtube-logo-3.png" alt="YouTube">
-        </a>
-        <a href="https://wa.me/916386977003" target="_blank" rel="noopener noreferrer">
-          <img src="https://www.freepnglogos.com/uploads/whatsapp-logo-png-hd-2.png" alt="WhatsApp">
-        </a>
-      </div>
-    </div>
-  </footer>
-
   <!-- JavaScript -->
   <script>
-    // Theme Toggle
-    const themeToggleButton = document.getElementById('themeToggle');
-    themeToggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      themeToggleButton.classList.toggle('off');
-    });
-
     // Copy Link from File
     async function copyFromFile(fileName) {
       try {

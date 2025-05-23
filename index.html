@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cloud RDP Pro</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset default styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Body styles */
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
@@ -22,14 +20,12 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Header */
     header {
       background: linear-gradient(135deg, #2563eb, #1e40af);
       color: #ffffff;
@@ -50,7 +46,6 @@
       margin: 0 auto 30px;
     }
 
-    /* Buttons */
     .button-container {
       display: flex;
       flex-wrap: wrap;
@@ -76,11 +71,6 @@
       transform: translateY(-2px);
     }
 
-    button:active {
-      transform: translateY(0);
-    }
-
-    /* Popup */
     .popup {
       position: fixed;
       bottom: 20px;
@@ -100,17 +90,124 @@
       opacity: 1;
     }
 
-    /* Dark Mode */
-    body.dark-mode {
-      background-color: #2d3748;
-      color: #e2e8f0;
+    /* Instructions Section */
+    .instructions {
+      padding: 80px 0;
+      background-color: #f9fafb;
     }
 
-    body.dark-mode header {
-      background: linear-gradient(135deg, #1e40af, #1f2a44);
+    .instructions h2 {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #111827;
     }
 
-    /* Responsive Design */
+    .instructions p.subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #4b5563;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .instruction-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .instruction-card {
+      background-color: #ffffff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .instruction-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .instruction-card h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .instruction-card h3::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-size: cover;
+    }
+
+    .instruction-card.connect h3::before {
+      background-image: url('https://img.icons8.com/ios-filled/24/2563eb/connected.png');
+    }
+
+    .instruction-card.password h3::before {
+      background-image: url('https://img.icons8.com/ios-filled/24/2563eb/lock.png');
+    }
+
+    .instruction-card ol {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .instruction-card ol li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #374151;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .instruction-card ol li::before {
+      content: counter(list-item);
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .instruction-card a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .instruction-card a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+
+    a.visit-button {
+      display: inline-block;
+      margin-top: 20px;
+      color: #ffffff;
+      background-color: #f59e0b;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    a.visit-button:hover {
+      background-color: #d97706;
+    }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 36px;
@@ -119,15 +216,32 @@
       header p {
         font-size: 18px;
       }
+
+      .instructions h2 {
+        font-size: 32px;
+      }
+
+      .instructions p.subtitle {
+        font-size: 16px;
+      }
+
+      .instruction-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .instruction-card {
+        padding: 24px;
+      }
     }
   </style>
 </head>
 <body>
+
   <!-- Header -->
   <header id="home">
     <div class="container">
       <h1>Cloud RDP Pro</h1>
-      <p style="font-size: 16px; color: #ffffff; background-color: #f59e0b; display: inline-block; padding: 8px 16px; border-radius: 6px;">
+      <p style="background-color: #f59e0b; display: inline-block; padding: 8px 16px; border-radius: 6px;">
         Click the buttons below to copy links
       </p>
       <div class="button-container">
@@ -139,15 +253,50 @@
         <button onclick="copyFromFile('rdp-link-6')">RDP 6</button>
       </div>
       <div id="copy-popup" class="popup"></div>
-      <a href="https://www.youtube.com/@CloudRDPPro" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 20px; color: #ffffff; background-color: #f59e0b; text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 6px; transition: background-color 0.3s ease;">
+      <a href="https://www.youtube.com/@CloudRDPPro" class="visit-button" target="_blank" rel="noopener noreferrer">
         Visit for Password
       </a>
     </div>
   </header>
 
+  <!-- Instructions Section -->
+  <section class="instructions">
+    <div class="container">
+      <h2>How to Use Cloud RDP Pro</h2>
+      <p class="subtitle">Follow these simple steps to connect to your Remote Desktop or retrieve the access password.</p>
+      <div class="instruction-grid">
+        <!-- Card 1 -->
+        <div class="instruction-card connect">
+          <h3>Connect to Your RDP/VPS</h3>
+          <ol>
+            <li>Click an <a href="#home">RDP Button</a> above to copy the link.</li>
+            <li>Open a new browser tab and paste the link.</li>
+            <li>Close any pop-up windows by clicking the close button.</li>
+            <li>Click the "Connect" button on the page.</li>
+            <li>Enter the password obtained from our YouTube channel.</li>
+            <li>Enjoy your Remote Desktop.</li>
+            <li>
+              <a href="https://raw.githubusercontent.com/freelink01/freelink/refs/heads/main/connect.gif" target="_blank">View tutorial VIDEO</a>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="instruction-card password">
+          <h3>Obtain the RDP/VPS Password</h3>
+          <ol>
+            <li>Click the <a href="https://www.youtube.com/@CloudRDPPro" target="_blank" rel="noopener noreferrer">Visit for Password</a> link above.</li>
+            <li>You’ll be redirected to our official YouTube channel.</li>
+            <li>Watch the latest video on the channel.</li>
+            <li>Locate the password in the video’s description.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- JavaScript -->
   <script>
-    // Copy Link from File
     async function copyFromFile(fileName) {
       try {
         const response = await fetch(fileName);
@@ -160,7 +309,6 @@
       }
     }
 
-    // Show Popup
     function showPopup(message) {
       const popup = document.getElementById('copy-popup');
       popup.textContent = message;

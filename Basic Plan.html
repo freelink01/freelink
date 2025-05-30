@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud RDP Pro - Plan 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-inter">
+  <header class="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-10 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Cloud RDP Pro - Plan 1</h1>
+  </header>
+
+  <div class="container mx-auto max-w-6xl p-6 md:p-12">
+    <div class="plans grid grid-cols-1 mb-16">
+      <div class="plan bg-white rounded-xl shadow-2xl p-8 border-l-4 border-blue-700 transition-transform hover:scale-105 duration-300">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Plan 1 - ₹17/Session</h3>
+        <ul class="list-disc pl-6 space-y-3 text-gray-700 text-base">
+          <li>Up to 11 Hours per Session</li>
+          <li>2 CPU Cores</li>
+          <li>6 GB RAM</li>
+          <li>12 GB HDD</li>
+          <li>5 GB Bandwidth / Session</li>
+          <li>Linux OS</li>
+          <li>24/7 Support</li>
+          <li>2–5 minute restart required after each 11-hour session</li>
+        </ul>
+        <button onclick="showTermsModal()" class="mt-6 px-8 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors duration-300 font-medium">Purchase Plan 1</button>
+      </div>
+    </div>
+
+    <div class="calculator bg-white rounded-xl shadow-2xl p-8 md:p-10 mb-16">
+      <h2 class="text-3xl font-semibold text-gray-900 mb-4">Cost Estimator</h2>
+      <p class="text-gray-600 mb-6 text-base">Calculate your costs for Plan 1. <span class="text-blue-700 font-medium">Note:</span> Each session provides up to 11 hours of usage, followed by a 2–5 minute restart.</p>
+
+      <div class="space-y-8">
+        <div class="border-t border-gray-200 pt-6">
+          <h3 class="text-xl font-medium text-gray-900 mb-4">Cost by Number of Sessions</h3>
+          <div class="max-w-md">
+            <label for="plan1-sessions" class="block text-sm font-medium text-gray-700 mb-2">Plan 1 (₹17 per Session):</label>
+            <input
+              type="number"
+              id="plan1-sessions"
+              min="1"
+              step="1"
+              placeholder="Enter number of sessions"
+              aria-describedby="plan1-result"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700 transition-all duration-300"
+              oninput="calcSessionCost(1)"
+            >
+            <div id="plan1-result" class="calculator-result mt-3 text-gray-900 font-medium transition-opacity duration-300" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="text-right">
+          <button onclick="resetCalculator()" class="px-6 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition-colors duration-300 font-medium">Reset Calculator</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle">
+      <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full mx-4 p-8 relative max-h-[80vh] overflow-y-auto">
+        <button onclick="hideTermsModal()" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition-colors" aria-label="Close modal">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <h2 id="termsModalTitle" class="text-2xl font-semibold text-gray-900 mb-6">Terms and Conditions</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                <th class="border border-gray-300 p-3 bg-blue-700 text-white text-left font-medium">Use Case</th>
+                <th class="border border-gray-300 p-3 bg-blue-700 text-white text-left font-medium">Allowed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">General Browsing / Development</td><td class="border border-gray-300 p-3 text-gray-700">✔ Allowed</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">Bitcoin / Crypto Mining</td><td class="border border-gray-300 p-3 text-gray-700">✖ Not Allowed</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">TOR Network Usage</td><td class="border border-gray-300 p-3 text-gray-700">✖ Not Allowed</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">Installing Windows in VPS</td><td class="border border-gray-300 p-3 text-gray-700">✖ Not Allowed</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">Hacking / Illegal Activities</td><td class="border border-gray-300 p-3 text-gray-700">✖ Not Allowed</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">VPN Hosting / Abuse</td><td class="border border-gray-300 p-3 text-gray-700">✖ Not Allowed</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">Excessive Resource Usage</td><td class="border border-gray-300 p-3 text-gray-700">⚠ May lead to suspension</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">Prohibition of Any Term and Condition / Excessive Usage</td><td class="border border-gray-300 p-3 text-gray-700">⚠ 2–3 sessions may be temporarily terminated</td></tr>
+              <tr><td class="border border-gray-300 p-3 text-gray-700">Session Restart</td><td class="border border-gray-300 p-3 text-gray-700">2–5 minute restart required after each 11-hour session</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-8 flex justify-end space-x-4">
+          <button onclick="hideTermsModal()" class="px-6 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition-colors duration-300 font-medium">Cancel</button>
+          <a href="https://freelink01.github.io/plan/" class="px-6 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors duration-300 font-medium">Continue</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calcSessionCost(plan) {
+      const sessions = parseInt(document.getElementById('plan1-sessions').value);
+      const rate = 17;
+      const resultElement = document.getElementById('plan1-result');
+      
+      if (isNaN(sessions) || sessions < 1) {
+        resultElement.innerText = "Please enter a valid number of sessions (1 or more).";
+        resultElement.classList.remove("text-gray-900", "opacity-100");
+        resultElement.classList.add("text-red-600", "opacity-100");
+        return;
+      }
+      
+      const cost = sessions * rate;
+      const totalHours = sessions * 11;
+      resultElement.innerText = `Total Cost: ₹${cost.toLocaleString('en-IN')} for ${totalHours} hour${totalHours === 1 ? '' : 's'}.`;
+      resultElement.classList.remove("text-red-600");
+      resultElement.classList.add("text-gray-900", "opacity-100");
+    }
+
+    function resetCalculator() {
+      const inputs = ['plan1-sessions'];
+      const results = ['plan1-result'];
+      
+      inputs.forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      
+      results.forEach(id => {
+        const element = document.getElementById(id);
+        element.innerText = '';
+        element.classList.remove("text-red-600", "text-gray-900", "opacity-100");
+      });
+    }
+
+    function showTermsModal() {
+      const modal = document.getElementById('termsModal');
+      modal.classList.remove('hidden');
+      modal.querySelector('button').focus(); // Focus on close button
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function hideTermsModal() {
+      const modal = document.getElementById('termsModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        hideTermsModal();
+      }
+    });
+  </script>
+</body>
+</html>

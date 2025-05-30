@@ -208,6 +208,127 @@
       background-color: #d97706;
     }
 
+    /* Pricing Section */
+    .pricing {
+      padding: 80px 0;
+      background-color: #ffffff;
+    }
+
+    .pricing h2 {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+
+    .pricing p.subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #4b5563;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .pricing-card {
+      background-color: #ffffff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-card.popular {
+      border: 2px solid #2563eb;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .pricing-card.popular::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2563eb;
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .pricing-card h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 16px;
+    }
+
+    .pricing-card .price {
+      font-size: 36px;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .pricing-card .price span {
+      font-size: 16px;
+      font-weight: 400;
+      color: #4b5563;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .pricing-card ul li {
+      font-size: 16px;
+      color: #374151;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .pricing-card ul li::before {
+      content: '✔';
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    .pricing-card a.purchase-button {
+      display: inline-block;
+      color: #ffffff;
+      background-color: #f59e0b;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .pricing-card a.purchase-button:hover {
+      background-color: #d97706;
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 36px;
@@ -217,18 +338,22 @@
         font-size: 18px;
       }
 
+      .pricing h2,
       .instructions h2 {
         font-size: 32px;
       }
 
+      .pricing p.subtitle,
       .instructions p.subtitle {
         font-size: 16px;
       }
 
+      .pricing-grid,
       .instruction-grid {
         grid-template-columns: 1fr;
       }
 
+      .pricing-card,
       .instruction-card {
         padding: 24px;
       }
@@ -290,6 +415,44 @@
             <li>Watch the latest video on the channel.</li>
             <li>Locate the pa$$w0rd in the video’s description.</li>
           </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing">
+    <div class="container">
+      <h2>Choose Your Plan</h2>
+      <p class="subtitle">Select the perfect RDP/VPS plan for your needs with flexible pricing and powerful features.</p>
+      <div class="pricing-grid">
+        <!-- Basic Plan -->
+        <div class="pricing-card">
+          <h3>Basic Plan</h3>
+          <div class="price">$9.99<span>/month</span></div>
+          <ul>
+            <li>1 CPU Core</li>
+            <li>2 GB RAM</li>
+            <li>50 GB SSD Storage</li>
+            <li>1 TB Bandwidth</li>
+            <li>Windows/Linux OS</li>
+            <li>24/7 Support</li>
+          </ul>
+          <a href="https://freelink01.github.io/plan/" class="purchase-button" target="_blank" rel="noopener noreferrer">Purchase Now</a>
+        </div>
+        <!-- Pro Plan -->
+        <div class="pricing-card popular">
+          <h3>Pro Plan</h3>
+          <div class="price">$19.99<span>/month</span></div>
+          <ul>
+            <li>2 CPU Cores</li>
+            <li>4 GB RAM</li>
+            <li>100 GB SSD Storage</li>
+            <li>2 TB Bandwidth</li>
+            <li>Windows/Linux OS</li>
+            <li>24/7 Priority Support</li>
+          </ul>
+          <a href="https://freelink01.github.io/plan/" class="purchase-button" target="_blank" rel="noopener noreferrer">Purchase Now</a>
         </div>
       </div>
     </div>

@@ -2,100 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cloud RDP Pro - We're working on our purchasing system. Check back soon!" />
-  <title>Cloud RDP Pro - Purchasing Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cloud RDP Pro - Purchasing system coming soon. Stay tuned for updates!" />
+  <title>Cloud RDP Pro — Purchasing Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    * {
+    /* Reset & Base */
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: #1f2937;
+      line-height: 1.5;
+      color: #1F2937; /* Cool dark slate */
+    }
+
+    body {
+      background-color: #F9FAFB; /* Light gray background */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
     }
 
     .container {
-      max-width: 640px;
-      margin: 0 24px;
-      padding: 0 24px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .coming-soon {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 80px 0;
-    }
-
-    .coming-soon h1 {
-      font-size: 36px;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 16px;
-    }
-
-    .coming-soon p {
-      font-size: 18px;
-      color: #4b5563;
       max-width: 600px;
-      margin-bottom: 32px;
+      background: #FFFFFF;
+      padding: 48px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      text-align: center;
     }
 
-    .coming-soon a.cta-button {
+    h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: #4B5563;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    a.cta-button {
       display: inline-block;
-      background-color: #2563eb;
-      color: #ffffff;
-      text-decoration: none;
+      background-color: #2563EB;
+      color: #FFFFFF;
       font-weight: 600;
-      padding: 12px 32px;
-      border-radius: 6px;
-      transition: background-color 0.2s ease;
+      font-size: 1rem;
+      padding: 14px 48px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .coming-soon a.cta-button:hover {
-      background-color: #1e40af;
+    a.cta-button:hover,
+    a.cta-button:focus {
+      background-color: #1D4ED8;
+      box-shadow: 0 6px 16px rgba(29, 78, 216, 0.6);
+      outline: none;
     }
 
-    @media (max-width: 768px) {
-      .coming-soon {
-        padding: 60px 0;
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 24px;
       }
 
-      .coming-soon h1 {
-        font-size: 32px;
+      .container {
+        padding: 32px 24px;
       }
 
-      .coming-soon p {
-        font-size: 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .coming-soon h1 {
-        font-size: 28px;
+      h1 {
+        font-size: 2.25rem;
       }
 
-      .coming-soon a.cta-button {
+      p {
+        font-size: 1rem;
+        margin-bottom: 28px;
+      }
+
+      a.cta-button {
         width: 100%;
-        text-align: center;
+        padding: 14px 0;
+        font-size: 1.125rem;
       }
     }
   </style>
 </head>
 <body>
-  <section class="coming-soon">
-    <div class="container">
-      <h1>Purchasing Coming Soon</h1>
-      <p>We’re working on bringing you a seamless purchasing experience for our RDP and VPS plans. Stay tuned for updates!</p>
-      <a href="https://freelink01.github.io/freelink/" class="cta-button">Return to Home</a>
-    </div>
-  </section>
+  <main class="container" role="main" aria-labelledby="page-title">
+    <h1 id="page-title">Purchasing Coming Soon</h1>
+    <p>We are currently enhancing our purchasing system to provide a smooth and secure experience for our RDP and VPS plans. Please check back soon for updates.</p>
+    <a href="https://freelink01.github.io/freelink/" class="cta-button" role="button" aria-label="Return to Home Page">Return to Home</a>
+  </main>
 </body>
 </html>
